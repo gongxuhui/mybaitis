@@ -1,0 +1,30 @@
+package com.gxh.mybaits;
+
+import com.gxh.mybaits.dao.EmpDao;
+import com.gxh.mybaits.dao.UserDao;
+import com.gxh.mybaits.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+public class UserController {
+    @Autowired
+    UserDao userDao;
+    @Autowired
+    EmpDao empDao;
+
+    @GetMapping("user/getInfo")
+    public List<User> getUser(){
+        List<User> user = userDao.getUser();
+        return user;
+    }
+
+    @GetMapping("user/getEmp")
+    public List<User> getEmp(){
+        List<User> user = empDao.getEmp();
+        return user;
+    }
+}
